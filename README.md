@@ -96,55 +96,146 @@
 
 ## SPDY协议的优缺点
 
-  | 优点        | 缺点           |
-
-  | ------------- |:-------------:|
-
-  | 下载速度快：连接复用、头部压缩 | 需要客户端和服务端同时支持SPDY |
-
-  | 节省流量：头部压缩 | 协议解析更复杂 |
-
-  | 页面加载快：请求分优先级、关键资源push |  |
-
-  | 安全：采用SSL |  |
+  <table>
+      <tr>
+          <th>优点</th>
+          <th>缺点</th>
+      </tr>
+      <tr>
+          <td>下载速度快：连接复用、头部压缩</td>
+          <td>需要客户端和服务端同时支持SPDY</td>
+      </tr>
+      <tr>
+          <td>节省流量：头部压缩</td>
+          <td>协议解析更复杂</td>
+      </tr>
+      <tr>
+          <td>页面加载快：请求分优先级、关键资源push</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>安全：采用SSL</td>
+          <td></td>
+      </tr>
+  </table>
 
 ## SPDY协议与http协议相比
 
-  | SPDY协议 | HTTP1.1协议 |
-
-  | -------- | ---------- |
-
-  | 一个SPDY连接允许建立多条stram（虚拟流），并发送多个HTTP请求 | 一个连接同时只能处理一个请求 |
-
-  | HTTP请求可以具有优先级，客户端可以要求服务器优先发送重要资源 | 一个处理时间很长的非关键请求阻塞服务器对后面请求的处理 |
-
-  | SPDY协议允许压缩头部，减少HTTP头部大小，减小带宽占用 | http请求和响应头未压缩，头部冗余，User-Agent,Host重复发送 |
-
-  | 服务器可以主动给客户端发送数据，不需要客户端主动请求 | 只有客户端才能发送请求 |
+  <table>
+      <tr>
+          <th>SPDY协议</th>
+          <th>HTTP1.1协议</th>
+      </tr>
+      <tr>
+          <td>一个SPDY连接允许建立多条stram（虚拟流），并发送多个HTTP请求</td>
+          <td>一个连接同时只能处理一个请求</td>
+      </tr>
+      <tr>
+          <td>HTTP请求可以具有优先级，客户端可以要求服务器优先发送重要资源</td>
+          <td>一个处理时间很长的非关键请求阻塞服务器对后面请求的处理</td>
+      </tr>
+      <tr>
+          <td>SPDY协议允许压缩头部，减少HTTP头部大小，减小带宽占用</td>
+          <td>http请求和响应头未压缩，头部冗余，User-Agent,Host重复发送</td>
+      </tr>
+      <tr>
+          <td>服务器可以主动给客户端发送数据，不需要客户端主动请求</td>
+          <td>只有客户端才能发送请求</td>
+      </tr>
+  </table>
 
 ## SPDY协议与http测速对比（数据采样）
 
-  | 测试网络 | 测试网址 | 测试指标 | spdy代理 | http代理 | spdy与http代理对比 |
-
-  | WIFI | m.sohu.com | 页面首字(ms) | 976 | 1168 | 16% |
-
-  | WIFI | m.sohu.com | 页面首屏(ms) | 1046 | 1237 | 15% |
-
-  | WIFI | m.sohu.com | 页面全部完成(ms) | 1046 | 1293 | 19% |
-
-  | WIFI | m.sohu.com | 网络完成时间(ms) | 2047 | 2367 | 14% |
-
-  | WIFI | m.sohu.com | 流量(KB) | 123 | 135 | 9% |
-
-  | WIFI | www.lashou.com | 页面首字(ms) | 1837 | 2026 | 9% |
-
-  | WIFI | www.lashou.com | 页面首屏(ms) | 3100 | 3776 | 18% |
-
-  | WIFI | www.lashou.com | 页面全部完成(ms) | 3100 | 3776 | 18% |
-
-  | WIFI | www.lashou.com | 网络完成时间(ms) | 2906 | 3563 | 18% |
-
-  | WIFI | www.lashou.com | 流量(KB) | 265 | 298 | 11% |
+  <table>
+      <tr>
+          <th>测试网络</th>
+          <th>测试网址</th>
+          <th>测试指标</th>
+          <th>spdy代理</th>
+          <th>http代理</th>
+          <th>spdy与http代理对比</th>
+      </tr>
+      <tr>
+          <td>WIFI</td>
+          <td>m.sohu.com</td>
+          <td>页面首字(ms)</td>
+          <td>976</td>
+          <td>1168</td>
+          <td>16%</td>
+      </tr>
+      <tr>
+          <td>WIFI</td>
+          <td>m.sohu.com</td>
+          <td>页面首屏(ms)</td>
+          <td>1046</td>
+          <td>1237</td>
+          <td>15%</td>
+      </tr>
+      <tr>
+          <td>WIFI</td>
+          <td>m.sohu.com</td>
+          <td>页面全部完成(ms)</td>
+          <td>1046</td>
+          <td>1293</td>
+          <td>19%</td>
+      </tr>
+      <tr>
+          <td>WIFI</td>
+          <td>m.sohu.com</td>
+          <td>网络完成时间(ms)</td>
+          <td>2047</td>
+          <td>2367</td>
+          <td>14%</td>
+      </tr>
+      <tr>
+          <td>WIFI</td>
+          <td>m.sohu.com</td>
+          <td>流量(KB)</td>
+          <td>123</td>
+          <td>135</td>
+          <td>9%</td>
+      </tr>
+      <tr>
+          <td>WIFI</td>
+          <td>www.lashou.com</td>
+          <td>页面首字(ms)</td>
+          <td>1837</td>
+          <td>2026</td>
+          <td>9%</td>
+      </tr>
+      <tr>
+          <td>WIFI</td>
+          <td>www.lashou.com</td>
+          <td>页面首屏(ms)</td>
+          <td>3100</td>
+          <td>3776</td>
+          <td>18%</td>
+      </tr>
+      <tr>
+          <td>WIFI</td>
+          <td>www.lashou.com</td>
+          <td>页面全部完成(ms)</td>
+          <td>3100</td>
+          <td>3776</td>
+          <td>18%</td>
+      </tr>
+      <tr>
+          <td>WIFI</td>
+          <td>www.lashou.com</td>
+          <td>网络完成时间(ms)</td>
+          <td>2906</td>
+          <td>3563</td>
+          <td>18%</td>
+      </tr>
+      <tr>
+          <td>WIFI</td>
+          <td>www.lashou.com</td>
+          <td>流量(KB)</td>
+          <td>265</td>
+          <td>298</td>
+          <td>11%</td>
+      </tr>
+  </table>
 
 ## SPDY和HTTP协议转换
 
@@ -204,8 +295,19 @@
   * 预连接和连接池
     * 不论是2G/3G还是WIFI，网络的延时(RTT）都很大，具体的延时如下：
 
-    | 网络 | 2G | 3G | WIFI |
-
-    | RTT(ms) | 200~400 | 50~100 | 0 ~ 100 |
+    <table>
+        <tr>
+            <th>网络</th>
+            <th>2G</th>
+            <th>3G</th>
+            <th>WIFI</th>
+        </tr>
+        <tr>
+            <td>RTT(ms)</td>
+            <td>200~400</td>
+            <td>50~100</td>
+            <td>0 ~ 100</td>
+        </tr>
+    </table>
 
   * 为了减少连接建立带来的额外消耗，采用预连接策略，处理流程，同时，在网络不稳定的情况下，TCP的拥塞算法会直接减缓资源的下载速度。如果只采用一个TCP连接，那么多个资源的下载速度总体会很慢。因此，采用多个TCP连接进行资源并行下载的连接池方式可以提升资源的总体下载速度。预连接在2G/3G网络下，平均可以节省大小200ms，在WIFI下平均可以节省50ms左右。
